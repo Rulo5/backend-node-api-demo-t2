@@ -2,7 +2,7 @@
 const { Schema, model} = require('mongoose');
 
 //contruccion de la tabla
-const estudiante = Schema({
+const estudianteSchema = Schema({
  
     numero_matricula:{
         type:Number,
@@ -35,5 +35,13 @@ const estudiante = Schema({
         require: true,
     },
 });
+
+estudianteSchema.method('toJSON', function() {
+    const { __v, _id, ...object } = this.toObject();
+    return {uid:_id,...object};
+})
+
+
+
 
 module.exports = model ('estudiante',estudianteSchema);

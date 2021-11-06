@@ -10,22 +10,16 @@ const app = express();
 //configurar cors,
 app.use(cors());
 
+app.use(express.json());
+
 
 // Base de datos
 dbConnection();
 
-console.log(process.env)
-
 
 //rutas 
-app.get('/', (req, res) => {
-
-    res.json({
-
-        ok: true,
-        msg:'hola'
-    });
-});
+// Rutas
+app.use( '/api/estudiantes', require('./routes/estudiantes') );
 
 
 app.listen( process.env.PORT, () => {
