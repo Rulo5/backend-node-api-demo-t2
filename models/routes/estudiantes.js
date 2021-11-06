@@ -1,18 +1,15 @@
 /*ruta:/api/estudiantes */
 
 const{Router} = require('express');
+const{getEstudiantes} = require('../controllers/estudiantes');
+
 const router = Router();
 
+router.get('/',getEstudiantes);
 
-//controlador, cuando se realice una consulta
-router.get('/', (req, res) => {
 
-    res.json({
 
-        ok: true,
-        msg:'hola'
-    });
-});
+
 
 //exportacion 
 module.exports = router;
